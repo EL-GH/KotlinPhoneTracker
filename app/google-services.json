@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "965268975266",
+    "firebase_url": "https://phone-tracker-77e33.firebaseio.com",
+    "project_id": "phone-tracker-77e33",
+    "storage_bucket": "phone-tracker-77e33.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:965268975266:android:718595647f97efb12a71fb",
+        "android_client_info": {
+          "package_name": "com.elgh.phonetracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "965268975266-47nn21supqep218mevvb6ucb6obv4kcg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.elgh.phonetracker",
+            "certificate_hash": "69a700361551c54a317b697aaebdef21c11f561a"
+          }
+        },
+        {
+          "client_id": "965268975266-5n2bmgmkm07c8tiljm7jd44lae52rfh5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCijqRH7nWhG4FREam0Dvalgd7_-M_mBpg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "965268975266-5n2bmgmkm07c8tiljm7jd44lae52rfh5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
