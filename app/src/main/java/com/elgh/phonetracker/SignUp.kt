@@ -9,19 +9,29 @@ import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.DocumentReference
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.type.Date
 import kotlinx.android.synthetic.main.activity_sign_up.*
+import java.text.SimpleDateFormat
 
 class SignUp : AppCompatActivity() {
 
 
-    var mAuth : FirebaseAuth? = null
+    private val mAuth : FirebaseAuth by lazy {
+        FirebaseAuth.getInstance()
+    }
+    private val firestoreInstance: FirebaseFirestore by lazy {
+        FirebaseFirestore.getInstance()
+    }
+
+    private val currentUserDocRef: DocumentReference
+    get() = firestoreInstance.document("Users/${mAuth.currentUser?.uid.toString()}")
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sign_up)
-
-        mAuth = FirebaseAuth.getInstance()
 
         btRegister.setOnClickListener {
             val email = edEmail.text.toString()
@@ -29,7 +39,11 @@ class SignUp : AppCompatActivity() {
 
             if(email.isNotEmpty() && password.isNotEmpty()) {
                 progressSignUp.visibility = View.VISIBLE
-                mAuth?.createUserWithEmailAndPassword(email, password)?.addOnCompleteListener {
+                mAuth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
+
+                    val newUser = User(email,"","")
+                    currentUserDocRef.set(newUser) // Ajouter l'email de l'utilisateur dans le Firestore
+
                     if(it.isSuccessful) {
                         Toast.makeText(applicationContext, "Successful Registration", Toast.LENGTH_LONG).show()
                     progressSignUp.visibility = View.GONE
